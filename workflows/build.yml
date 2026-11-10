@@ -1,0 +1,23 @@
+name: Build RaceSoul
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Giải nén source
+        run: unzip -o RaceSoul-v2.2-source.zip
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          cache-dependency-path: RaceSoul/pom.xml
+      - name: Build
+        run: mvn -B -f RaceSoul/pom.xml clean package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RaceSoul-jar
+          path: RaceSoul/target/RaceSoul.jar
