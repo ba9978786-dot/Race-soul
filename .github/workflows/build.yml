@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Giải nén source
-        run: unzip -o RaceSoul-v2.2-source.zip
+        run: unzip -o RaceSoul-v3_5-source.zip
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
